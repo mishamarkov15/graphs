@@ -10,6 +10,7 @@ struct IGraph {
     virtual size_t VerticesCount() const = 0;
     virtual std::vector<int> GetNextVertices(int vertex) const = 0;
     virtual std::vector<int> GetPrevVertices(int vertex) const = 0;
+    virtual void Display() const noexcept {}
 };
 
 #endif //IGRAPH_IGRAPH_H

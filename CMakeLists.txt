@@ -11,11 +11,13 @@ set(SOURCES
         main.cpp
         src/Algorithms.cpp
         src/IGraph.cpp
+        src/MatrixGraph.cpp
         src/ListGraph.cpp)
 
 set(HEADERS
         include/Algorithms.h
         include/IGraph.h
+        include/MatrixGraph.h
         include/ListGraph.h)
 
 

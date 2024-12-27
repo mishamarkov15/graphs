@@ -1,19 +1,17 @@
-#ifndef IGRAPH_LISTGRAPH_H
-#define IGRAPH_LISTGRAPH_H
+#ifndef IGRAPH_MATRIXGRAPH_H
+#define IGRAPH_MATRIXGRAPH_H
 
 #include "IGraph.h"
 #include <iostream>
-#include <deque>
 #include <cassert>
-#include <vector>
 
-class ListGraph : public IGraph {
+class MatrixGraph : public IGraph {
 public:
-    explicit ListGraph(int size);
+    explicit MatrixGraph(int size);
 
-    explicit ListGraph(const IGraph& graph);
+    ~MatrixGraph() = default;
 
-    ~ListGraph() = default;
+    explicit MatrixGraph(const IGraph &graph);
 
     void AddEdge(int from, int to) override;
 
@@ -26,8 +24,8 @@ public:
     void Display() const noexcept override;
 
 private:
-    std::vector<std::vector<int>> adjacencyLists;
+    std::vector<std::vector<int>> _matrix;
 };
 
 
-#endif //IGRAPH_LISTGRAPH_H
+#endif //IGRAPH_MATRIXGRAPH_H

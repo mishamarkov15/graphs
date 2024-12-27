@@ -37,3 +37,13 @@ std::vector<int> ListGraph::GetPrevVertices(int vertex) const {
     }
     return prevVertices;
 }
+
+void ListGraph::Display() const noexcept {
+    for (size_t i = 0; i < adjacencyLists.size(); ++i) {
+        std::cout << i << ": ";
+        for (const int& j : adjacencyLists[i]) {
+            std::cout << j << ' ';
+        }
+        std::cout << '\n';
+    }
+}

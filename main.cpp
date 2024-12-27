@@ -1,33 +1,41 @@
 #include <iostream>
 #include "include/Algorithms.h"
 #include "include/ListGraph.h"
+#include "include/MatrixGraph.h"
 
-
-int main() {
-    ListGraph graph(7);
-    graph.AddEdge(0, 1);
-    graph.AddEdge(0, 5);
-    graph.AddEdge(1, 2);
-    graph.AddEdge(1, 3);
-    graph.AddEdge(1, 5);
-    graph.AddEdge(1, 6);
-    graph.AddEdge(3, 2);
-    graph.AddEdge(3, 4);
-    graph.AddEdge(3, 6);
-    graph.AddEdge(5, 4);
-    graph.AddEdge(5, 6);
-    graph.AddEdge(6, 4);
+void graphTester(const IGraph& graph, const std::string& title) {
+    std::cout << "************ Testing " << title << " ************\n";
+    std::cout << "\n************ Graph ************\n";
+    graph.Display();
+    std::cout << "\nBFS: ";
 
     mainBFS(graph, [](int vertex) -> void { std::cout << vertex << ' ';});
-    std::cout << '\n';
+    std::cout << "\nDFS: ";
 
     mainDFS(graph, [](int vertex) -> void { std::cout << vertex << ' ';});
-    std::cout << '\n';
+    std::cout << "\nTopological Sort: ";
 
     for (const auto& vertex : topologicalSort(graph)) {
         std::cout << vertex << ' ';
     }
-    std::cout << '\n';
+
+    std::cout << "\n************ Done " << title << " ************\n\n";
+}
+
+int main() {
+    int vertexes;
+    std::cin >> vertexes;
+    ListGraph listGraph(vertexes);
+    for (int i = 0; i < vertexes; ++i) {
+        int from, to;
+        std::cin >> from >> to;
+        listGraph.AddEdge(from, to);
+    }
+
+    MatrixGraph matrixGraph(listGraph);
+
+    graphTester(listGraph, "ListGraph");
+    graphTester(matrixGraph, "MatrixGraph");
 
     return 0;
 }
