@@ -10,12 +10,14 @@ set(CMAKE_CXX_STANDARD 20)
 set(SOURCES
         main.cpp
         src/Algorithms.cpp
+        src/ArcGraph.cpp
         src/IGraph.cpp
         src/MatrixGraph.cpp
         src/ListGraph.cpp)
 
 set(HEADERS
         include/Algorithms.h
+        include/ArcGraph.h
         include/IGraph.h
         include/MatrixGraph.h
         include/ListGraph.h)

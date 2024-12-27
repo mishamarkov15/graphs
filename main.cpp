@@ -1,11 +1,12 @@
 #include <iostream>
 #include "include/Algorithms.h"
+#include "include/ArcGraph.h"
 #include "include/ListGraph.h"
 #include "include/MatrixGraph.h"
 
 void graphTester(const IGraph& graph, const std::string& title) {
     std::cout << "************ Testing " << title << " ************\n";
-    std::cout << "\n************ Graph ************\n";
+    std::cout << "************ Graph ************\n";
     graph.Display();
     std::cout << "\nBFS: ";
 
@@ -23,19 +24,21 @@ void graphTester(const IGraph& graph, const std::string& title) {
 }
 
 int main() {
-    int vertexes;
-    std::cin >> vertexes;
+    int vertexes, arcs;
+    std::cin >> vertexes >> arcs;
     ListGraph listGraph(vertexes);
-    for (int i = 0; i < vertexes; ++i) {
+    for (int i = 0; i < arcs; ++i) {
         int from, to;
         std::cin >> from >> to;
         listGraph.AddEdge(from, to);
     }
 
     MatrixGraph matrixGraph(listGraph);
+    ArcGraph arcGraph(matrixGraph);
 
     graphTester(listGraph, "ListGraph");
     graphTester(matrixGraph, "MatrixGraph");
+    graphTester(arcGraph, "ArcGraph");
 
     return 0;
 }
