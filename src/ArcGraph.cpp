@@ -1,10 +1,8 @@
 #include "../include/ArcGraph.h"
 
-ArcGraph::ArcGraph(int size) : _arcs(size) {}
-
-ArcGraph::ArcGraph(const IGraph& other) {
+ArcGraph::ArcGraph(const IGraph &other) {
     for (size_t i = 0; i < other.VerticesCount(); ++i) {
-        for (const int& v : other.GetNextVertices(i)) {
+        for (const int &v: other.GetNextVertices(i)) {
             _arcs.emplace_back(i, v);
         }
     }
@@ -19,7 +17,7 @@ void ArcGraph::AddEdge(int from, int to) {
 
 size_t ArcGraph::VerticesCount() const {
     std::set<int> vertices;
-    for (const arc& a : _arcs) {
+    for (const arc &a: _arcs) {
         vertices.insert(a.first);
         vertices.insert(a.second);
     }
@@ -29,7 +27,7 @@ size_t ArcGraph::VerticesCount() const {
 std::vector<int> ArcGraph::GetNextVertices(int vertex) const {
     assert(0 <= vertex && vertex < VerticesCount());
     std::vector<int> res;
-    for (const arc& a : _arcs) {
+    for (const arc &a: _arcs) {
         if (a.first == vertex) {
             res.push_back(a.second);
         }
@@ -40,7 +38,7 @@ std::vector<int> ArcGraph::GetNextVertices(int vertex) const {
 std::vector<int> ArcGraph::GetPrevVertices(int vertex) const {
     assert(0 <= vertex && vertex < VerticesCount());
     std::vector<int> res;
-    for (const arc& a : _arcs) {
+    for (const arc &a: _arcs) {
         if (a.second == vertex) {
             res.push_back(a.first);
         }
@@ -51,14 +49,9 @@ std::vector<int> ArcGraph::GetPrevVertices(int vertex) const {
 void ArcGraph::Display() const noexcept {
     size_t i = 0;
     std::cout << "[";
-    for (const arc& a : _arcs) {
+    for (const arc &a: _arcs) {
         std::cout << "(" << a.first << ", " << a.second << ")";
         if (++i < _arcs.size()) std::cout << ", ";
     }
     std::cout << "]\n";
 }
-
-
-
-
-

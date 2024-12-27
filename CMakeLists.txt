@@ -13,14 +13,16 @@ set(SOURCES
         src/ArcGraph.cpp
         src/IGraph.cpp
         src/MatrixGraph.cpp
-        src/ListGraph.cpp)
+        src/ListGraph.cpp
+        src/SetGraph.cpp)
 
 set(HEADERS
         include/Algorithms.h
         include/ArcGraph.h
         include/IGraph.h
         include/MatrixGraph.h
-        include/ListGraph.h)
+        include/ListGraph.h
+        include/SetGraph.h)
 
 
 add_executable(iGraph

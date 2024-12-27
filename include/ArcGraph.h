@@ -11,14 +11,20 @@ class ArcGraph : public IGraph {
 public:
     typedef std::pair<int, int> arc;
 
-    explicit ArcGraph(int size);
+    ArcGraph() = default;
+
     ~ArcGraph() = default;
-    explicit ArcGraph(const IGraph& other);
+
+    explicit ArcGraph(const IGraph &other);
 
     void AddEdge(int from, int to) override;
+
     size_t VerticesCount() const override;
+
     std::vector<int> GetNextVertices(int vertex) const override;
+
     std::vector<int> GetPrevVertices(int vertex) const override;
+
     void Display() const noexcept override;
 
 private:
