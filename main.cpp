@@ -3,6 +3,7 @@
 #include "include/ArcGraph.h"
 #include "include/ListGraph.h"
 #include "include/MatrixGraph.h"
+#include "include/SetGraph.h"
 
 void graphTester(const IGraph& graph, const std::string& title) {
     std::cout << "************ Testing " << title << " ************\n";
@@ -35,10 +36,12 @@ int main() {
 
     MatrixGraph matrixGraph(listGraph);
     ArcGraph arcGraph(matrixGraph);
+    SetGraph setGraph(arcGraph);
 
     graphTester(listGraph, "ListGraph");
     graphTester(matrixGraph, "MatrixGraph");
     graphTester(arcGraph, "ArcGraph");
+    graphTester(setGraph, "SetGraph");
 
     return 0;
 }
